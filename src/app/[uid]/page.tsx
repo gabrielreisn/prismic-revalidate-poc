@@ -35,6 +35,9 @@ export default async function Page({ params }: { params: Params }) {
     if(page.data.meta_description === 'invalid') {
       // throw new Error('[GENERATE PAGE] meta error')]
       console.error('[GENERATE PAGE] meta error')
+
+
+      // I want to test if returning null from a page makes it retrieve the latest available cache
       return null
     }
 

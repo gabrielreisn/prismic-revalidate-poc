@@ -24,11 +24,10 @@ export default async function Home() {
   //@ts-ignore
   const buttonLink = page.data.slices[0]?.primary.buttonLink as any
 
-  // console.info({page, data: buttonLink})
 
 
   if(buttonLink.url.includes('http://')){
-    // throw new Error('fodase???????')
+    throw new Error('http:// is not allowed, please use https://')
   }
 
 

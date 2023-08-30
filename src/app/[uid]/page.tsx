@@ -20,10 +20,6 @@ export async function generateMetadata({
   const settings = await client.getSingle("settings");
 
 
-  if(page.data.meta_description === 'invalid') {
-    throw new Error('[GENERATE METADATA] meta error')
-  }
-
   return {
     title: `${asText(page.data.title)} — ${asText(settings.data.site_title)}`,
     description: page.data.meta_description,
@@ -37,7 +33,9 @@ export default async function Page({ params }: { params: Params }) {
     .catch(() => notFound());
 
     if(page.data.meta_description === 'invalid') {
-      throw new Error('[GENERATE PAGE] meta error')
+      // throw new Error('[GENERATE PAGE] meta error')]
+      console.error('[GENERATE PAGE] meta error')
+      return null
     }
 
   return <SliceZone slices={page.data.slices} components={components} />;
